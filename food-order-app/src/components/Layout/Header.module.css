@@ -6,10 +6,15 @@
   padding: 0.5rem 2rem;
 }
 
-.main-image img {
-  width: 100%;
+.main-image {
+  position: absolute;
   top: 0;
   max-height: 100vh;
-  position: absolute;
+  width: 100%;
   z-index: -1;
+  overflow: hidden;
+}
+.main-image img {
+  width: 100%;
+  height: auto;
 }
