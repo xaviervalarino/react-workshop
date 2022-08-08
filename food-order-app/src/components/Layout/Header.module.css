@@ -8,4 +8,8 @@
 
 .main-image img {
   width: 100%;
+  top: 0;
+  max-height: 100vh;
+  position: absolute;
+  z-index: -1;
 }
