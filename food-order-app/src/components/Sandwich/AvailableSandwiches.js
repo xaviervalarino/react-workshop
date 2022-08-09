@@ -1,3 +1,4 @@
+import Card from "../UI/Card";
 import classes from "./AvailableSandwiches.module.css"
 
 const DUMMY_SANDWICHES = [
@@ -39,7 +40,9 @@ export default function AvailableSandwiches() {
   });
   return (
     <section>
-      <ul className={classes.list}>{sandwichList}</ul>
+      <Card>
+        <ul className={classes.list}>{sandwichList}</ul>
+      </Card>
     </section>
   );
 }
