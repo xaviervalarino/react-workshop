@@ -9,12 +9,13 @@
 .main-image {
   position: absolute;
   top: 0;
-  max-height: 100vh;
-  width: 100%;
+  width: 100vw;
+  max-width: 100%;
   z-index: -1;
-  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 95%);
 }
+
 .main-image img {
   width: 100%;
-  height: auto;
+  object-fit: fill;
 }
