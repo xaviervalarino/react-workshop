@@ -1,4 +1,5 @@
 import Card from "../UI/Card";
+import SandwichItem from "./SandwichItem/SandwichItem";
 import classes from "./AvailableSandwiches.module.css"
 
 const DUMMY_SANDWICHES = [
@@ -35,9 +36,18 @@ const DUMMY_SANDWICHES = [
 ];
 
 export default function AvailableSandwiches() {
-  const sandwichList = DUMMY_SANDWICHES.map((sandwich) => {
-    return <li key={sandwich.id}>{sandwich.name}</li>;
-  });
+  const sandwichList = DUMMY_SANDWICHES.map(
+    ({ id, name, description, price }) => {
+      return (
+        <SandwichItem
+          key={id}
+          name={name}
+          description={description}
+          price={price}
+        />
+      );
+    }
+  );
   return (
     <section>
       <Card>
