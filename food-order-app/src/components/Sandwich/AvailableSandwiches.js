@@ -1,3 +1,5 @@
+import classes from "./AvailableSandwiches.module.css"
+
 const DUMMY_SANDWICHES = [
   {
     id: "m1",
@@ -36,8 +38,8 @@ export default function AvailableSandwiches() {
     return <li key={sandwich.id}>{sandwich.name}</li>;
   });
   return (
-    <section style={{ background: "#fff", padding: "0.5rem" }}>
-      <ul>{sandwichList}</ul>
+    <section>
+      <ul className={classes.list}>{sandwichList}</ul>
     </section>
   );
 }
