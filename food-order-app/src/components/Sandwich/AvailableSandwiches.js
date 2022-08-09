@@ -26,7 +26,7 @@ const DUMMY_SANDWICHES = [
   {
     id: "m5",
     name: "Breakfast",
-    description: "Breakfast sandwich---served all day!",
+    description: "Breakfast sandwich—served all day!",
     price: 11.99,
   },
 ];
