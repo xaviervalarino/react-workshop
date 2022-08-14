@@ -6,10 +6,11 @@ export default function SandwichItem({ name, description, price }) {
     <li className={classes.sandwich}>
       <div>
         <h3>{name}</h3>
+        <div className={classes.description}>{description}</div>
+        <div className={classes.price}>{price}</div>
       </div>
-      <div className={classes.description}>{description}</div>
-      <div className={classes.price}>{price}</div>
-      <div></div>
+      <div>
+      </div>
     </li>
   );
 }
