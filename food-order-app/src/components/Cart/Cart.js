@@ -6,7 +6,7 @@ export default function Cart(props) {
     <ul>
       {[{ id: "c1", name: "Tuna fish", amount: 2, price: 12.99 }].map(
         (item) => (
-          <li key={item.id}>{item.name}</li>
+          <li key={`${item.id}-${i}`}>{item.name}</li>
         )
       )}
     </ul>
