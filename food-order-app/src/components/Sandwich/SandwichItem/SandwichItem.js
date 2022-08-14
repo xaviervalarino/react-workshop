@@ -1,3 +1,4 @@
+import SandwichItemForm from "./SandwitchItemForm";
 import classes from "./SandwichItem.module.css";
 
 export default function SandwichItem({ name, description, price }) {
@@ -10,6 +11,7 @@ export default function SandwichItem({ name, description, price }) {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
+        <SandwichItemForm />
       </div>
     </li>
   );

@@ -1,0 +1,13 @@
+.input {
+  /* display: inline-block */
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+.input input {
+  width: 3.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #dedede;
+}

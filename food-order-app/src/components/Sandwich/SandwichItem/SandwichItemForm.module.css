@@ -1,0 +1,12 @@
+.form {
+  flex-direction: column;
+  text-align: right;
+}
+
+.form button {
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  color: #fff;
+  background-color: crimson;
+}
