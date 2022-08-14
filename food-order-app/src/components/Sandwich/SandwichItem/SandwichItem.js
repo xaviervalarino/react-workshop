@@ -1,8 +1,20 @@
+import { useContext } from "react";
+
+import CartContext from "../../../store/cart-context";
 import SandwichItemForm from "./SandwitchItemForm";
 import classes from "./SandwichItem.module.css";
 
 export default function SandwichItem({ id, name, description, price }) {
+  const cartCtx = useContext(CartContext);
   price = `$${price.toFixed(2)}`;
+  const addToCartHandler = (amount) => {
+    cartCtx.addItem({
+      id: id,
+      name: name,
+      amount: amount,
+      price: price,
+    });
+  };
   return (
     <li className={classes.sandwich}>
       <div>
@@ -11,7 +23,7 @@ export default function SandwichItem({ id, name, description, price }) {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
-        <SandwichItemForm id={id} />
+        <SandwichItemForm id={id} onAddToCart={addToCartHandler} />
       </div>
     </li>
   );
