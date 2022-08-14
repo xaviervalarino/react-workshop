@@ -28,3 +28,13 @@ button.button--alt {
   background: transparent;
   border: 1px solid crimson;
 }
+
+.cart-items {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.cart-items li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #efefef;
+}
