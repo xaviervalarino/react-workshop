@@ -1,7 +1,7 @@
 import SandwichItemForm from "./SandwitchItemForm";
 import classes from "./SandwichItem.module.css";
 
-export default function SandwichItem({ name, description, price }) {
+export default function SandwichItem({ id, name, description, price }) {
   price = `$${price.toFixed(2)}`;
   return (
     <li className={classes.sandwich}>
@@ -11,7 +11,7 @@ export default function SandwichItem({ name, description, price }) {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
-        <SandwichItemForm />
+        <SandwichItemForm id={id} />
       </div>
     </li>
   );

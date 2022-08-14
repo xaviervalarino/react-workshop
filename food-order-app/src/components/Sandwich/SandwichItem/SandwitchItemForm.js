@@ -1,13 +1,13 @@
 import Input from "../../UI/Input";
 import classes from "./SandwichItemForm.module.css";
 
-export default function SandwichItemForm(props) {
+export default function SandwichItemForm({ id }) {
   return (
     <form className={classes.form}>
       <Input
         label="Amount"
         input={{
-          id: "amount",
+          id: `amount-${id}`,
           type: "number",
           min: "1",
           max: "5",

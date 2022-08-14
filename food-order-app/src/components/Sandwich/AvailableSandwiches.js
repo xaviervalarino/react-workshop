@@ -40,6 +40,7 @@ export default function AvailableSandwiches() {
     ({ id, name, description, price }) => {
       return (
         <SandwichItem
+          id={id}
           key={id}
           name={name}
           description={description}
