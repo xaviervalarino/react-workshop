@@ -6,7 +6,7 @@ import classes from "./Cart.module.css";
 
 export default function Cart(props) {
   const cartCtx = useContext(CartContext);
-  const totalAmountStr = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const totalAmountStr = `$${cartCtx.totalAmount}`;
   const hasItems = cartCtx.items.length > 0;
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
