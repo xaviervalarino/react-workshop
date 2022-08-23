@@ -1,15 +1,10 @@
 import { Component } from "react";
 import Users from "./Users";
-
-const DUMMY_USERS = [
-  { id: "u1", name: "Alfred" },
-  { id: "u2", name: "John" },
-  { id: "u3", name: "William" },
-  { id: "u4", name: "Suzanne" },
-  { id: "u5", name: "Ricardo" },
-];
+import UsersContext from "../store/users-context";
 
 export default class UserFinder extends Component {
+  static contextType = UsersContext;
+
   constructor() {
     super();
     // state is always an object in Class-based components
@@ -19,7 +14,7 @@ export default class UserFinder extends Component {
   componentDidMount() {
     // simulate HTTP fetch request
     setTimeout(() => {
-      this.setState({ filteredUsers: DUMMY_USERS });
+      this.setState({ filteredUsers: this.context.users });
       console.log("set `filteredUsers`");
     }, 1000);
   }
@@ -27,7 +22,7 @@ export default class UserFinder extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
-        filteredUsers: DUMMY_USERS.filter((user) =>
+        filteredUsers: this.context.users.filter((user) =>
           user.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
         ),
       });
