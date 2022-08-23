@@ -1,14 +1,6 @@
 import { Component } from "react";
 import User from "./User";
 
-const DUMMY_USERS = [
-  { id: "u1", name: "Alfred" },
-  { id: "u2", name: "John" },
-  { id: "u3", name: "William" },
-  { id: "u4", name: "Suzanne" },
-  { id: "u5", name: "Ricardo" },
-];
-
 export default class Users extends Component {
   constructor() {
     super();
@@ -21,7 +13,7 @@ export default class Users extends Component {
   render() {
     const userList = (
       <ul>
-        {DUMMY_USERS.map((user) => (
+        {this.props.users.map((user) => (
           <User key={user.id} name={user.name} />
         ))}
       </ul>
