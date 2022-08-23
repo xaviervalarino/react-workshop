@@ -7,6 +7,11 @@ export default class Users extends Component {
     // state is always an object in Class-based components
     this.state = { showUsers: true };
   }
+  componentDidUpdate() {
+    if(!this.props.users.length) {
+      throw new Error('No users provided.')
+    }
+  }
   toggleUsersHandler() {
     this.setState((prev) => ({ showUsers: !prev.showUsers, }));
   }
