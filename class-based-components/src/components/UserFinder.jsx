@@ -13,7 +13,15 @@ export default class UserFinder extends Component {
   constructor() {
     super();
     // state is always an object in Class-based components
-    this.state = { filteredUsers: DUMMY_USERS, searchTerm: "" };
+    this.state = { filteredUsers: [], searchTerm: "" };
+  }
+  // similar to `useEffectI()` with empty dependency array
+  componentDidMount() {
+    // simulate HTTP fetch request
+    setTimeout(() => {
+      this.setState({ filteredUsers: DUMMY_USERS });
+      console.log("set `filteredUsers`");
+    }, 1000);
   }
   // basically like `useEffect()` with prevState.searchTerm as a dep
   componentDidUpdate(prevProps, prevState) {
