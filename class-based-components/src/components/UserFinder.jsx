@@ -20,7 +20,7 @@ export default class UserFinder extends Component {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
         filteredUsers: DUMMY_USERS.filter((user) =>
-          user.name.includes(this.state.searchTerm)
+          user.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
         ),
       });
     }
