@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useCounter from "./hooks/use-counter";
 
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
@@ -7,9 +6,6 @@ import Tasks from "./components/Tasks";
 export default function App() {
   console.log("App component rendered");
   const [tasks, setTasks] = useState([]);
-
-  // const countUp = useCounter();
-  // const countDown = useCounter(false);
 
   const addTaskHandler = (task) => {
     setTasks((prev) => prev.concat(task));
