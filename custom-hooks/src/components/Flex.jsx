@@ -4,10 +4,12 @@
         style={{
           display: "flex",
           flexDirection: props.direction || "initial",
-          gap: "1rem",
-          margin: "1rem",
-          padding: "1rem",
-          border: "1px solid",
+          alignItems: props.alignItems || 'baseline',
+          justifyContent: props.justifyContent || 'initial',
+          gap: props.gap || "1rem",
+          margin: props.margin || "1rem",
+          padding: props.padding || "1rem",
+          border: props.border || "1px solid",
         }}
       >
         {props.children}
