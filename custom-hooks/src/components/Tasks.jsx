@@ -8,10 +8,12 @@ export default function Tasks(props) {
   const { isLoading, isError, sendRequest: fetchTasks } = useRequest();
   useEffect(() => {
     fetchTasks((data) => {
-      const tasks = Object.keys(data).map((key) => ({
-        id: key,
-        text: data[key].text,
-      }));
+      const tasks = !data
+        ? []
+        : Object.keys(data).map((key) => ({
+            id: key,
+            text: data[key].text,
+          }));
       props.onSetTasks((prev, props) => {
         return prev.length === tasks.length ? prev : tasks;
       });
