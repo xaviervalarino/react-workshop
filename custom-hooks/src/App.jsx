@@ -11,10 +11,18 @@ export default function App() {
     setTasks((prev) => prev.concat(task));
   };
 
+  const deleteTaskHandler = (id) => {
+    setTasks((prev) => {
+      const index = prev.findIndex((task) => task.id == id);
+      prev.splice(index, 1)
+      return [...prev]
+    });
+  };
+
   return (
     <div style={{ width: "60ch" }}>
       <AddTask onAddTask={addTaskHandler} />
-      <Tasks items={tasks} onFetch={setTasks} />
+      <Tasks items={tasks} onDeleteTask={deleteTaskHandler} onSetTasks={setTasks} />
     </div>
   );
 }

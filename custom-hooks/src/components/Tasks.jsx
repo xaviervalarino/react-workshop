@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useRequest from "../hooks/use-request";
 import Flex from "./Flex";
+import Task from "./Task";
 
 export default function Tasks(props) {
   console.log("Tasks component rendered");
@@ -11,7 +12,9 @@ export default function Tasks(props) {
         id: key,
         text: data[key].text,
       }));
-      props.onFetch(tasks);
+      props.onSetTasks((prev, props) => {
+        return prev.length === tasks.length ? prev : tasks;
+      });
     });
   }, []);
 
@@ -20,7 +23,7 @@ export default function Tasks(props) {
     content = (
       <ul>
         {props.items.map(({ id, text }) => (
-          <li key={id}>{text}</li>
+          <Task key={id} id={id} text={text} onDelete={props.onDeleteTask} />
         ))}
       </ul>
     );
