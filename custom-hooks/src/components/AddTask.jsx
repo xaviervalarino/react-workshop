@@ -13,7 +13,6 @@ export default function AddTask(props) {
       return;
     }
     const config = {
-      url: "https://react-workshop-679c8-default-rtdb.firebaseio.com/tasks.json",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: { text: task },

@@ -5,12 +5,8 @@ import Flex from "./Flex";
 export default function Tasks(props) {
   console.log("Tasks component rendered");
   const { isLoading, isError, sendRequest: fetchTasks } = useRequest();
-  const config = {
-    url: "https://react-workshop-679c8-default-rtdb.firebaseio.com/tasks.json",
-  };
-
   useEffect(() => {
-    fetchTasks(config, (data) => {
+    fetchTasks((data) => {
       const tasks = Object.keys(data).map((key) => ({
         id: key,
         text: data[key].text,
