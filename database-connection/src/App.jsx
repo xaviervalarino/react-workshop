@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import MovieList from "./components/MovieList";
+import AddMovie from "./components/AddMovie";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
@@ -10,18 +11,45 @@ export default function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch("https://swapi.dev/api/films/");
+      const res = await fetch(
+        "https://react-workshop-679c8-default-rtdb.firebaseio.com/movies.json"
+      );
       if (!res.ok) {
         throw new Error("Something went wrong.");
       }
       const data = await res.json();
-      console.log("fetch results", data.results);
-      setMovies(data.results);
+      console.log("fetch results", data);
+      setMovies(
+        Object.keys(data).map((key) => ({
+          id: key,
+          title: data[key].title,
+          releaseDate: data[key].releaseDate,
+          openingText: data[key].openingText,
+        }))
+      );
     } catch (error) {
       setError(error.message);
     }
     setIsLoading(false);
   }, []);
+
+  const addMovieHandler = async (movie) => {
+    try {
+      const res = await fetch(
+        "https://react-workshop-679c8-default-rtdb.firebaseio.com/movies.json",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(movie),
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      fetchMoviesHandler();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     console.log("useEffect fired");
@@ -41,8 +69,13 @@ export default function App() {
 
   return (
     <div style={{ width: "60ch" }}>
-      <h1>Movie List</h1>
-      {content}
+      <section>
+        <AddMovie onAddMovie={addMovieHandler} />
+      </section>
+      <section>
+        <h1>Movie List</h1>
+        {content}
+      </section>
     </div>
   );
 }
