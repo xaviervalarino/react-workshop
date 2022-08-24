@@ -1,13 +1,24 @@
+import { useState } from "react";
 import useCounter from "./hooks/use-counter";
 
+import AddTask from "./components/AddTask";
+import Tasks from "./components/Tasks";
+
 export default function App() {
-  const countUp = useCounter();
-  const countDown = useCounter(false);
+  console.log("App component rendered");
+  const [tasks, setTasks] = useState([]);
+
+  // const countUp = useCounter();
+  // const countDown = useCounter(false);
+
+  const addTaskHandler = (task) => {
+    setTasks((prev) => prev.concat(task));
+  };
 
   return (
-    <>
-      <h2>{countUp}</h2>
-      <h2>{countDown}</h2>
-    </>
+    <div style={{ width: "60ch" }}>
+      <AddTask onAddTask={addTaskHandler} />
+      <Tasks items={tasks} onFetch={setTasks} />
+    </div>
   );
 }
