@@ -38,5 +38,9 @@ export default function Tasks(props) {
   if (isLoading) {
     content = "Loading tasks...";
   }
-  return <Flex direction="column">{content}</Flex>;
+  return (
+    <Flex direction="column" alignItems="stretch">
+      {content}
+    </Flex>
+  );
 }
