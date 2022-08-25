@@ -28,7 +28,13 @@ export default function TaskList(props) {
     content = (
       <ul className={cls.list}>
         {props.items.map(({ id, text }) => (
-          <Task key={id} id={id} text={text} onDelete={props.onDeleteTask} />
+          <Task
+            key={id}
+            id={id}
+            text={text}
+            onUpdate={props.onUpdateTask}
+            onDelete={props.onDeleteTask}
+          />
         ))}
       </ul>
     );

@@ -11,6 +11,15 @@ export default function App() {
     setTasks((prev) => prev.concat(task));
   };
 
+  const updateTaskHandler = (id, newValue) => {
+    setTasks((prev) => {
+      const index = prev.findIndex((task) => task.id == id);
+      prev[index].text = newValue;
+      console.log(prev);
+      return [...prev];
+    });
+  };
+
   const deleteTaskHandler = (id) => {
     setTasks((prev) => {
       const index = prev.findIndex((task) => task.id == id);
@@ -22,7 +31,12 @@ export default function App() {
   return (
     <div style={{ width: "60ch" }}>
       <AddTask onAddTask={addTaskHandler} />
-      <TaskList items={tasks} onDeleteTask={deleteTaskHandler} onSetTasks={setTasks} />
+      <TaskList
+        items={tasks}
+        onSetTasks={setTasks}
+        onUpdateTask={updateTaskHandler}
+        onDeleteTask={deleteTaskHandler}
+      />
     </div>
   );
 }

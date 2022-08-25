@@ -1,5 +1,5 @@
-import Flex from "./UI/Flex";
-import useRequest from "../hooks/use-request";
+import Flex from "../../UI/Flex";
+import useRequest from "../../../hooks/use-request";
 
 export default function DeleteTask(props) {
   const { isLoading, isError, sendRequest } = useRequest('DELETE');
