@@ -1,0 +1,16 @@
+.list {
+  /* background: cyan; */
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+.list li h3 {
+  margin: 0;
+}
+.list li:not(:last-child) {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid;
+}

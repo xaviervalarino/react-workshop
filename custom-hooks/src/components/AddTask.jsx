@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import Flex from "./UI/Flex";
+import Card from "./UI/Card";
 import useRequest from "../hooks/use-request";
 
 export default function AddTask(props) {
@@ -19,10 +19,10 @@ export default function AddTask(props) {
 
   return (
     <form onSubmit={addTaskHandler}>
-      <Flex>
+      <Card>
         <input type="text" ref={inputRef} style={{ flex: "1" }} />
         <button>{isLoading ? "Sending..." : "Add Task"}</button>
-      </Flex>
+      </Card>
     </form>
   );
 }

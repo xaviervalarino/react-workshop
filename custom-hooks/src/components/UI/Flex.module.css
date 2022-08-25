@@ -1,0 +1,19 @@
+.flex {
+  /* defaults */
+  --align-items: initial;
+  --border: initial;
+  --direction: initial;
+  --gap: initial;
+  --justify-content: initial;
+  --margin: initial;
+  --padding: initial;
+
+  display: flex;
+  align-items: var(--align-items);
+  border: var(--border);
+  flex-direction: var(--direction) ;
+  gap: var(--gap);
+  justify-content: var(--justify-content);
+  margin: var(--margin);
+  padding: var(--padding);
+}

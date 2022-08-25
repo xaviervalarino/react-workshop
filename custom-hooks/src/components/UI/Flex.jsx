@@ -1,18 +1,18 @@
-  export default function Flex (props) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: props.direction || "initial",
-          alignItems: props.alignItems || 'baseline',
-          justifyContent: props.justifyContent || 'initial',
-          gap: props.gap || "1rem",
-          margin: props.margin || "1rem",
-          padding: props.padding || "1rem",
-          border: props.border || "1px solid",
-        }}
-      >
-        {props.children}
-      </div>
-    );
+import cls from "./Flex.module.css";
+
+export default function Flex(props) {
+  const style = {
+    ["--align-items"]: props.alignItems,
+    ["--direction"]: props.direction,
+    ["--border"]: props.border,
+    ["--gap"]: props.gap,
+    ["--justify-content"]: props.justifyContent,
+    ["--margin"]: props.margin,
+    ["--padding"]: props.padding,
   };
+  return (
+    <div style={style} className={cls.flex}>
+      {props.children}
+    </div>
+  );
+}

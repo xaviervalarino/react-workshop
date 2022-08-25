@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import useRequest from "../hooks/use-request";
-import Flex from "./UI/Flex";
+
+import Card from "./UI/Card";
 import Task from "./Task";
+
+import cls from './TaskList.module.css'
 
 export default function TaskList(props) {
   console.log("Tasks component rendered");
@@ -23,7 +26,7 @@ export default function TaskList(props) {
   let content = <h2>No Tasks to do</h2>;
   if (props.items.length) {
     content = (
-      <ul>
+      <ul className={cls.list}>
         {props.items.map(({ id, text }) => (
           <Task key={id} id={id} text={text} onDelete={props.onDeleteTask} />
         ))}
@@ -43,9 +46,5 @@ export default function TaskList(props) {
   if (isLoading) {
     content = "Loading tasks...";
   }
-  return (
-    <Flex direction="column" alignItems="stretch">
-      {content}
-    </Flex>
-  );
+  return <Card direction="column">{content}</Card>;
 }
