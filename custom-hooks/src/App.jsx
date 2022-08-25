@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import AddTask from "./components/AddTask";
-import Tasks from "./components/Tasks";
+import TaskList from "./components/TaskList";
 
 export default function App() {
   console.log("App component rendered");
@@ -22,7 +22,7 @@ export default function App() {
   return (
     <div style={{ width: "60ch" }}>
       <AddTask onAddTask={addTaskHandler} />
-      <Tasks items={tasks} onDeleteTask={deleteTaskHandler} onSetTasks={setTasks} />
+      <TaskList items={tasks} onDeleteTask={deleteTaskHandler} onSetTasks={setTasks} />
     </div>
   );
 }

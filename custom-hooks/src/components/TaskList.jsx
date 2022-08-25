@@ -3,7 +3,7 @@ import useRequest from "../hooks/use-request";
 import Flex from "./Flex";
 import Task from "./Task";
 
-export default function Tasks(props) {
+export default function TaskList(props) {
   console.log("Tasks component rendered");
   const { isLoading, isError, sendRequest: fetchTasks } = useRequest('GET');
   useEffect(() => {
