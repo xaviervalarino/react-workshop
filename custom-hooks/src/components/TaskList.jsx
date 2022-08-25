@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useRequest from "../hooks/use-request";
-import Flex from "./Flex";
+import Flex from "./UI/Flex";
 import Task from "./Task";
 
 export default function TaskList(props) {

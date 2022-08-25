@@ -1,4 +1,4 @@
-import Flex from "./Flex";
+import Flex from "./UI/Flex";
 import DeleteTask from "./DeleteTask";
 
 export default function Task(props) {

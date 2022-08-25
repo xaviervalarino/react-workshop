@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import Flex from "./Flex";
+import Flex from "./UI/Flex";
 import useRequest from "../hooks/use-request";
 
 export default function AddTask(props) {
