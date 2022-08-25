@@ -4,7 +4,7 @@ import useRequest from "../hooks/use-request";
 import Card from "./UI/Card";
 import Task from "./Task";
 
-import cls from './TaskList.module.css'
+import cls from "./TaskList.module.css";
 
 export default function TaskList(props) {
   console.log("Tasks component rendered");
