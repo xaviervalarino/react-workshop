@@ -5,7 +5,7 @@ import Task from "./Task";
 
 export default function TaskList(props) {
   console.log("Tasks component rendered");
-  const { isLoading, isError, sendRequest: fetchTasks } = useRequest('GET');
+  const { isLoading, isError, sendRequest: fetchTasks } = useRequest("GET");
   useEffect(() => {
     fetchTasks((data) => {
       const tasks = !data

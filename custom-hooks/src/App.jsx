@@ -14,8 +14,8 @@ export default function App() {
   const deleteTaskHandler = (id) => {
     setTasks((prev) => {
       const index = prev.findIndex((task) => task.id == id);
-      prev.splice(index, 1)
-      return [...prev]
+      prev.splice(index, 1);
+      return [...prev];
     });
   };
 
