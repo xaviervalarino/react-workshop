@@ -1,0 +1,8 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+.input.error input {
+  border: 1px solid crimson;
+  border-radius: 2px;
+}
