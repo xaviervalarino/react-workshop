@@ -34,5 +34,5 @@ button.button--alt {
   margin: 0;
   padding: 0;
   max-height: 45vh;
-  overflow: scroll;
+  overflow-y: scroll;
 }
