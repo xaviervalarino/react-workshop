@@ -1,38 +1,24 @@
+import { useEffect, useState } from "react";
+
 import Card from "../UI/Card";
 import SandwichItem from "./SandwichItem/SandwichItem";
 import classes from "./AvailableSandwiches.module.css";
 
-const DUMMY_SANDWICHES = {
-  m1: {
-    name: "Pastami",
-    description: "Pastami sandwich",
-    price: 12.99,
-  },
-  m2: {
-    name: "Waldorf Chicken Salad",
-    description: "Waldorf Chicken Salad sandwich",
-    price: 11.99,
-  },
-  m3: {
-    name: "Roast Beef",
-    description: "Roast Beef sandwich",
-    price: 13.99,
-  },
-  m4: {
-    name: "Vegetarian",
-    description: "Vegetarian sandwich",
-    price: 10.99,
-  },
-  m5: {
-    name: "Breakfast",
-    description: "Breakfast sandwich—served all day!",
-    price: 11.99,
-  },
-};
-
 export default function AvailableSandwiches() {
-  const sandwichList = Object.keys(DUMMY_SANDWICHES).map((id) => {
-    const { name, description, price } = DUMMY_SANDWICHES[id];
+  const [sandwiches, setSandwiches] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        "https://react-workshop-679c8-default-rtdb.firebaseio.com/Sandwiches.json"
+      );
+      const data = await res.json();
+      setSandwiches(data)
+    };
+    fetchData();
+  }, []);
+
+  const sandwichList = Object.keys(sandwiches).map((id) => {
+    const { name, description, price } = sandwiches[id];
     return (
       <SandwichItem
         id={id}
