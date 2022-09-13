@@ -35,4 +35,7 @@ button.button--alt {
   padding: 0;
   max-height: 45vh;
   overflow-y: scroll;
+  /* scrollbar positioning fix */
+  margin-right: -1rem;
+  padding-right: 1rem;
 }
