@@ -4,9 +4,7 @@ My sample projects built while working through ["React Complete Guide"](https://
 ## Custom Hooks
 [`./custom-hooks`](./custom-hooks)
 
-A simple TODO list app that uses a custom HTTP to do CRUD operations on a Firebase Realtime Database.
-(Moved away from CRA to Vite for compiling and it's night and day)
-
+A simple TODO list app that uses a custom HTTP hook to perform CRUD operations on a Firebase Realtime Database.
 
 https://user-images.githubusercontent.com/4262486/186784967-faaa916f-32a2-4d2d-a976-a9229281a1c0.mov
 
