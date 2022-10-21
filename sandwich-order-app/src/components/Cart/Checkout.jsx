@@ -1,5 +1,6 @@
-import classes from "./Checkout.module.css";
+import TextField from "../UI/TextField";
 import Button, { ButtonGroup } from "../UI/Button";
+import classes from "./Checkout.module.css";
 
 export default function Checkout(props) {
   const confirmHandler = (e) => {
@@ -8,23 +9,11 @@ export default function Checkout(props) {
 
   return (
     <form>
-      <div className={classes.control}>
-        <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" />
-      </div>
-      <div className={classes.control}>
-        <label htmlFor="address">Street Address</label>
-        <input type="text" id="address" />
-      </div>
+      <TextField id="name" title="Your Name" />
+      <TextField id="address" title="Street Address" />
       <div className={classes.inline}>
-        <div className={classes.control}>
-          <label htmlFor="city">City</label>
-          <input type="text" id="city" />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor="postal">Postal Code</label>
-          <input type="text" id="postal" />
-        </div>
+        <TextField id="city" title="City" />
+        <TextField id="postal" title="Postal Code" />
       </div>
 
       <ButtonGroup>
