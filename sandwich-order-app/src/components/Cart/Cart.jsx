@@ -26,7 +26,7 @@ export default function Cart(props) {
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
-      {cartCtx.items.map((item, i) => (
+      {cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
           name={item.name}
@@ -41,8 +41,8 @@ export default function Cart(props) {
 
   const modalActions = (
     <ButtonGroup>
-      <Button alt onClick={props.onClose} text="Close"/>
-      <Button onClick={orderHandler} text="Order"/>
+      <Button alt onClick={props.onClose} text="Close" />
+      <Button onClick={orderHandler} text="Order" />
     </ButtonGroup>
   );
 
