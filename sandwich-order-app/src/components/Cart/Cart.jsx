@@ -8,6 +8,8 @@ import Button, { ButtonGroup } from "../UI/Button";
 
 export default function Cart(props) {
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
   const cartCtx = useContext(CartContext);
   const totalAmountStr = `$${cartCtx.totalAmount}`;
   const hasItems = cartCtx.items.length > 0;
@@ -24,14 +26,21 @@ export default function Cart(props) {
     setIsCheckout(true);
   };
 
-  const submitOrderHandler = (userData) => {
-    fetch('https://react-workshop-679c8-default-rtdb.firebaseio.com/orders.json', {
-      method: 'POST',
-      body: JSON.stringify({
-        user: userData,
-        cart: cartCtx.items,
-      })
-    })
+  const submitOrderHandler = async (userData) => {
+    setIsSubmitting(true);
+    await fetch(
+      "https://react-workshop-679c8-default-rtdb.firebaseio.com/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: userData,
+          cart: cartCtx.items,
+        }),
+      }
+    );
+    setIsSubmitting(false);
+    setDidSubmit(true);
+    cartCtx.clearCart();
   };
 
   const cartItems = (
@@ -56,8 +65,8 @@ export default function Cart(props) {
     </ButtonGroup>
   );
 
-  return (
-    <Modal onClose={props.onClose}>
+  const cartContent = (
+    <>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
@@ -67,6 +76,23 @@ export default function Cart(props) {
         <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
       )) ||
         modalActions}
+    </>
+  );
+
+  const isSubmittingContent = <p>Submitting your order...</p>;
+
+  const didSubmitContent = (
+    <>
+      <p>Order sent!</p>
+      <Button onClick={props.onClose} text="Close" />
+    </>
+  );
+
+  return (
+    <Modal onClose={props.onClose}>
+      {!isSubmitting && !didSubmit && cartContent}
+      {isSubmitting && isSubmittingContent}
+      {didSubmit && didSubmitContent}
     </Modal>
   );
 }
