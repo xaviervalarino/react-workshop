@@ -4,6 +4,7 @@ import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import Checkout from "./Checkout";
+import Button, { ButtonGroup } from "../UI/Button";
 
 export default function Cart(props) {
   const [isCheckout, setIsCheckout] = useState(false);
@@ -39,16 +40,10 @@ export default function Cart(props) {
   );
 
   const modalActions = (
-    <div className={classes.actions}>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
-        Close
-      </button>
-      {hasItems && (
-        <button className={classes.button} onClick={orderHandler}>
-          Order
-        </button>
-      )}
-    </div>
+    <ButtonGroup>
+      <Button alt onClick={props.onClose} text="Close"/>
+      <Button onClick={orderHandler} text="Order"/>
+    </ButtonGroup>
   );
 
   return (

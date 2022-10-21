@@ -1,4 +1,5 @@
 import classes from "./Checkout.module.css";
+import Button, { ButtonGroup } from "../UI/Button";
 
 export default function Checkout(props) {
   const confirmHandler = (e) => {
@@ -26,10 +27,10 @@ export default function Checkout(props) {
         </div>
       </div>
 
-      <button type="button" onClick={props.onCancel}>
-        Cancel
-      </button>
-      <button>Confirm</button>
+      <ButtonGroup>
+        <Button alt type="button" onClick={props.onCancel} text="Cancel" />
+        <Button text="Confirm" />
+      </ButtonGroup>
     </form>
   );
 }
