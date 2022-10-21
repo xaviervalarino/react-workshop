@@ -24,6 +24,16 @@ export default function Cart(props) {
     setIsCheckout(true);
   };
 
+  const submitOrderHandler = (userData) => {
+    fetch('https://react-workshop-679c8-default-rtdb.firebaseio.com/orders.json', {
+      method: 'POST',
+      body: JSON.stringify({
+        user: userData,
+        cart: cartCtx.items,
+      })
+    })
+  };
+
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
@@ -53,7 +63,10 @@ export default function Cart(props) {
         <span>Total Amount</span>
         <span>{totalAmountStr}</span>
       </div>
-      {(isCheckout && <Checkout onCancel={props.onClose} />) || modalActions}
+      {(isCheckout && (
+        <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
+      )) ||
+        modalActions}
     </Modal>
   );
 }

@@ -5,27 +5,37 @@ import classes from "./Checkout.module.css";
 
 const isEmpty = (value) => value.trim().length === 0;
 const isFiveChars = (value) => value.trim().length === 5;
+const objMap = (obj, callback) => Object.fromEntries(Object.entries(obj).map(callback))
 
 export default function Checkout(props) {
-  const [formInputsValid, setFormInputsValid] = useState({
+  const [formValidity, setFormValidity] = useState({
     name: true,
     address: true,
     city: true,
     postalCode: true,
   });
-  const nameInputRef = useRef();
-  const addressInputRef = useRef();
-  const cityInputRef = useRef();
-  const postalInputRef = useRef();
+  const refs = {
+    name: useRef(),
+    address: useRef(),
+    city: useRef(),
+    postalCode: useRef(),
+  };
 
   const confirmHandler = (e) => {
     e.preventDefault();
-    setFormInputsValid({
-      name: !isEmpty(nameInputRef.current.value),
-      address: !isEmpty(addressInputRef.current.value),
-      city: !isEmpty(cityInputRef.current.value),
-      postalCode: isFiveChars(postalInputRef.current.value),
-    });
+    const validatedInputs = objMap(refs, ([key, ref]) => {
+        const value =
+          key === "postalCode"
+            ? isFiveChars(ref.current.value)
+            : !isEmpty(ref.current.value);
+        return [key, value];
+      });
+    setFormValidity(validatedInputs)
+
+    if (Object.values(validatedInputs).includes(false)) {
+      return
+    }
+    props.onConfirm(objMap(refs, ([key, ref]) => [key, ref.current.value]));
   };
 
   return (
@@ -33,27 +43,27 @@ export default function Checkout(props) {
       <TextField
         id="name"
         title="Your Name"
-        error={!formInputsValid.name && "Please enter a valid name"}
-        ref={nameInputRef}
+        error={!formValidity.name && "Please enter a valid name"}
+        ref={refs.name}
       />
       <TextField
         id="address"
         title="Street Address"
-        error={!formInputsValid.address && "Please enter a valid address"}
-        ref={addressInputRef}
+        error={!formValidity.address && "Please enter a valid address"}
+        ref={refs.address}
       />
       <div className={classes.inline}>
         <TextField
           id="city"
           title="City"
-          error={!formInputsValid.city && "Please enter a valid city"}
-          ref={cityInputRef}
+          error={!formValidity.city && "Please enter a valid city"}
+          ref={refs.city}
         />
         <TextField
           id="postal"
           title="Postal Code"
-          error={!formInputsValid.postalCode && "Please enter a valid postal code"}
-          ref={postalInputRef}
+          error={!formValidity.postalCode && "Please enter a valid postal code"}
+         ref={refs.postalCode}
         />
       </div>
 
