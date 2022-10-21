@@ -12,7 +12,6 @@ export default function Cart(props) {
   const [didSubmit, setDidSubmit] = useState(false);
   const cartCtx = useContext(CartContext);
   const totalAmountStr = `$${cartCtx.totalAmount}`;
-  const hasItems = cartCtx.items.length > 0;
 
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
