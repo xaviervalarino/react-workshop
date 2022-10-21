@@ -1,10 +1,11 @@
+import { forwardRef } from "react";
 import classes from "./TextField.module.css";
 
-export default function TextField(props) {
-  return (
-    <div className={classes.control}>
-      <label htmlFor={props.id}>{props.title}</label>
-      <input type="text" id={props.id} ref={props.ref} />
-    </div>
-  );
-}
+const TextField = forwardRef((props, ref) => (
+  <div className={classes.control}>
+    <label htmlFor={props.id}>{props.title}</label>
+    <input type="text" id={props.id} ref={ref} />
+  </div>
+));
+
+export default TextField;
