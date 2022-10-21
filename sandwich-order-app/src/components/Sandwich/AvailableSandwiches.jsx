@@ -12,7 +12,7 @@ export default function AvailableSandwiches() {
         "https://react-workshop-679c8-default-rtdb.firebaseio.com/Sandwiches.json"
       );
       const data = await res.json();
-      setSandwiches(data)
+      setSandwiches(data);
     };
     fetchData();
   }, []);
