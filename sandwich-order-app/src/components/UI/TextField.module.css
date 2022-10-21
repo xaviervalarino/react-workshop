@@ -14,5 +14,16 @@
   padding: 0.5rem;
   border: 1px solid #bdbdbd;
   border-radius: 8px;
+  margin: 0;
+}
+
+.error input {
+  border-color: crimson;
+}
+
+.error p {
+  color: crimson;
+  font-size: 0.85rem;
+  margin: 0;
 }
 
