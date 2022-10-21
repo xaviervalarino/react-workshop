@@ -6,6 +6,8 @@ import classes from "./AvailableSandwiches.module.css";
 
 export default function AvailableSandwiches() {
   const [sandwiches, setSandwiches] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
@@ -15,6 +17,7 @@ export default function AvailableSandwiches() {
       setSandwiches(data);
     };
     fetchData();
+    setIsLoading(false);
   }, []);
 
   const sandwichList = Object.keys(sandwiches).map((id) => {
@@ -29,10 +32,13 @@ export default function AvailableSandwiches() {
       />
     );
   });
+
   return (
     <section>
       <Card>
-        <ul className={classes.list}>{sandwichList}</ul>
+        {(isLoading && <p>Loading...</p>) || (
+          <ul className={classes.list}>{sandwichList}</ul>
+        )}
       </Card>
     </section>
   );
