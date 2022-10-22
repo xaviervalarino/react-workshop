@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState, counterActions } from "../store";
+import { RootState } from "../store";
+import { counterActions } from "../store/counter"
 
 export default function Counter() {
   const amountRef = useRef<HTMLInputElement>(null);

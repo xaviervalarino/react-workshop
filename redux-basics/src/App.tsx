@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 import Counter from "./components/Counter";
 import Header from "./components/Header";

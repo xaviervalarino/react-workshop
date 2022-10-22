@@ -1,6 +1,6 @@
 import { useRef, forwardRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, authActions } from "../store";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/auth";
 
 const TextField = forwardRef((props: { id: string; label: string }, ref) => (
   <div style={{ display: "flex", flexDirection: "column", margin: "1rem 0" }}>
