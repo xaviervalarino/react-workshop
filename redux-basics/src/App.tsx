@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { CountState } from "./store";
+import { CountState, counterActions } from "./store";
 
 export default function App() {
   const amountRef = useRef<HTMLInputElement>(null);
@@ -8,13 +8,11 @@ export default function App() {
   const counter = useSelector((state: CountState) => state.count);
   const amount = useSelector((state: CountState) => state.amount);
 
-  const decrementHandler = () => dispatch({ type: "decrement" });
-  const incrementHandler = () => dispatch({ type: "increment" });
-  const changeAmountHandler = () => {
-    dispatch({
-      type: "change_amount",
-      amount: amountRef.current?.value || 1,
-    });
+  const decrementHandler = () => dispatch(counterActions.decrement());
+  const incrementHandler = () => dispatch(counterActions.increment());
+  const setAmountHandler = () => {
+    const amount = amountRef.current?.value || 1
+    dispatch(counterActions.setAmount(+amount));
   };
 
   return (
@@ -44,7 +42,7 @@ export default function App() {
           type="number"
           id="count"
           defaultValue={amount}
-          onChange={changeAmountHandler}
+          onChange={setAmountHandler}
           ref={amountRef}
           style={{
             width: "6rem",
